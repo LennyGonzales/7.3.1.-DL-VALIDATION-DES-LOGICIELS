@@ -129,15 +129,16 @@ public class BankAccount {
 	}
 
 	public boolean withdrawMoney(double withdrawAmount) {
-		if (withdrawAmount >= 0 && balance >= withdrawAmount && withdrawAmount < withdrawLimit
-				&& withdrawAmount + amountWithdrawn <= withdrawLimit) {
-			balance = balance - withdrawAmount;
-			success = true;
-			amountWithdrawn += withdrawAmount;
-		} else {
-			success = false;
+		if (!isWithdrawable(withdrawAmount)) { // 1 condition
+			return false;
 		}
-		return success;
+		balance = balance - withdrawAmount;
+		amountWithdrawn += withdrawAmount;
+		return true;
+	}
+
+	public boolean isWithdrawable(double withdrawAmount) {
+		return withdrawAmount >= 0 && balance >= withdrawAmount && withdrawAmount + amountWithdrawn <= withdrawLimit; // 3 conditions
 	}
 
 	public void setAccountNumber(int accNumber) {

@@ -28,7 +28,7 @@ jobs:
         
         echo "Number of .java files : $JAVA_FILES" > java-file-report.txt
         echo "Total lines of code : $TOTAL_LINES_OF_CODE" >> java-file-report.txt
-        echo "Per-file breakdown :\n $PER_FILE_BREAKDOWN" >> java-file-report.txt
+        echo "Per-file breakdown : $PER_FILE_BREAKDOWN" >> java-file-report.txt
     - name: Upload report artifact
       uses: actions/upload-artifact@v4
       with:

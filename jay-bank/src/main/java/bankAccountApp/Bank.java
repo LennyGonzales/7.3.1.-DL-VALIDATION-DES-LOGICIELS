@@ -141,9 +141,10 @@ public class Bank {
 	public void saveAccounts(Bank accManager) {
 		FileOutputStream fos = null;
 		OutputStreamWriter osw = null;
-		try {
+		try (
 			fos = new FileOutputStream("C:\\Users\\jay4k\\Desktop\\stuff\\Bankaccountinfo\\BankAccountinfotext.text");
-			osw = new OutputStreamWriter(fos);
+			osw = new OutputStreamWriter(fos)
+		) {
 			for (int i = 0; i < Accounts.size(); i++) {
 				BankAccount tmp = Accounts.get(i);
 

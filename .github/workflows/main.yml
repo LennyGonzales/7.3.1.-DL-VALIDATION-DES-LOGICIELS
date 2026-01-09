@@ -24,7 +24,10 @@ jobs:
         fi
         
         TOTAL_LINES_OF_CODE=$(find . -name "*.java" -exec wc -l {} + | awk '{sum+=$1} END {print sum}')
-        PER_FILE_BREAKDOWN=$(find . -name "*.java" -exec wc -l {} \; | sort -k1 -nr)
+        PER_FILE_BREAKDOWN=$(find . -name "*.java" -print0 \
+          | xargs -0 wc -l \
+          | sort -nr \
+          | awk '{print $2 " – " $1}')
         
         echo "Number of .java files : $JAVA_FILES" > java-file-report.txt
         echo "Total lines of code : $TOTAL_LINES_OF_CODE" >> java-file-report.txt

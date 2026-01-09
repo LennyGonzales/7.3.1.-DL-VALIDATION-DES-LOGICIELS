@@ -129,7 +129,7 @@ public class BankAccount {
 	}
 
 	public boolean withdrawMoney(double withdrawAmount) {
-		if (!isWithdrawable(withdrawAmount)) { // 1 condition
+		if (!isWithdrawable(withdrawAmount)) { // 2 Decisions (similar to if(...) => return false, else => ...)
 			return false;
 		}
 		balance = balance - withdrawAmount;
@@ -138,7 +138,7 @@ public class BankAccount {
 	}
 
 	public boolean isWithdrawable(double withdrawAmount) {
-		return withdrawAmount >= 0 && balance >= withdrawAmount && withdrawAmount + amountWithdrawn <= withdrawLimit; // 3 conditions
+		return withdrawAmount >= 0 && balance >= withdrawAmount && withdrawAmount + amountWithdrawn <= withdrawLimit; // 4 decisions (similar to a if(...) => return true, else if(...)  => return true, else if(...)  => return true, else => return false) 
 	}
 
 	public void setAccountNumber(int accNumber) {

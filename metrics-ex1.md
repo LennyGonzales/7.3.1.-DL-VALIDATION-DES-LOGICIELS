@@ -8,7 +8,8 @@
 |BankAccountApp	| 491 |	2 |	Responsable de toute la logique d’IHM console : menus, boucles, lecture de saisies, choix d’opérations, gestion des erreurs, ... |
 
 
-**⇒ Do you feel its size roughly matches its responsibility?**
+`⇒ Do you feel its size roughly matches its responsibility?`
+
 Pour Bank, la taille est globalement cohérente avec sa responsabilité de gestion centrale des comptes (création, recherche, stats, persistance).
 Pour BankAccount, la taille se justifie par le mélange données métier + opérations (dépôt/retrait) + sérialisation, même si la serialisation/desarialisation pourrait être extrait.
 Pour Person, la taille paraît raisonnable si la classe fait à la fois stockage et validation détaillée des données personnelles.

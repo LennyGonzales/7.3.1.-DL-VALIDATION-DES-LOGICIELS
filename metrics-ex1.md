@@ -1,5 +1,7 @@
 # Metrics - Exercice 1
 
+Command : `java -jar ./ckjm_ext.jar ./target/classes/bankAccountApp/*.class`
+
 | Class |	LOC (approx.) |	NOM |	Short description of responsibility |
 |-------|-----------------|-----|---------------------------------------|
 |Bank	|       413       |	 14	| Responsable de la création, de la suppression, de la recherche, de l'enregistrement, du chargement des comptes, de ... et du virements entre les comptes. |

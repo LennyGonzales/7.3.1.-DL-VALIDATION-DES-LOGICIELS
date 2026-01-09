@@ -1,0 +1,39 @@
+name: Java Report for BankApplication
+
+on: [push]
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Scan Java files
+      id: scan
+      run: |
+        if find . -name "*.class" | grep -q .; then
+          echo ".class files found"
+          exit 1
+        fi
+        
+        JAVA_FILES=$(find . -name "*.java" | wc -l)
+        if [ "$JAVA_FILES" -eq 0 ]; then
+          echo "No .java files found"
+          exit 1
+        fi
+        
+        TOTAL_LINES_OF_CODE=$(find . -name "*.java" -exec wc -l {} + | awk '{sum+=$1} END {print sum}')
+        PER_FILE_BREAKDOWN=$(find . -name "*.java" -exec wc -l {} \; | sort -k1 -nr)
+        
+        echo "Number of .java files : $JAVA_FILES" > java-file-report.txt
+        echo "Total lines of code : $TOTAL_LINES_OF_CODE" >> java-file-report.txt
+        echo "Per-file breakdown : $PER_FILE_BREAKDOWN" >> java-file-report.txt
+      
+        echo "Report generated successfully"
+    
+    - name: Upload report artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: java-file-report
+        path: java-file-report.txt

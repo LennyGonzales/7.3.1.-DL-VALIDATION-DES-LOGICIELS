@@ -3,7 +3,7 @@
 J'ai choisi la fonction **withdrawMoney(double withdrawAmount)**.
 1. `Cyclomatic complexity value` : **5**
 ```bash
-~ public boolean isWithdrawable(double withdrawAmount): 5
+~ public boolean withdrawMoney(double withdrawAmount): 5
 ```
 ```java
 public boolean withdrawMoney(double withdrawAmount) {
